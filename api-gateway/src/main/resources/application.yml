@@ -1,0 +1,29 @@
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+      rule: random
+
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: user-service
+              uri: lb://USER-SERVICE
+              predicates:
+                - name: Path
+                  args:
+                    pattern: /user-service/**
+
+
