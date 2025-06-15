@@ -1,4 +1,4 @@
-package org.example.userservice.dto;
+package org.example.vehicleservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class UserDTO {
+public class VehicleDTO {
     private Long id;
-    private String username;
+    private String licensePlate;
+    private String type;
     private String email;
-    private String password;
-    private String role;
 }

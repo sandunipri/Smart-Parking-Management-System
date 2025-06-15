@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -48,4 +49,18 @@ public class UserServiceImpl implements UserService {
             return false;
         }
     }
+
+/*    @Override
+    public boolean existByEmail(String email) {
+        Optional<User> user = userRepo.findById(email);
+        System.out.println("Checking existence for: " + email);
+        return user.isPresent();
+
+    }*/
+
+    @Override
+    public boolean existByEmail(String email) {
+        return userRepo.findById(email).isPresent();
+    }
+
 }
