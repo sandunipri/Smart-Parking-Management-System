@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class VehicleDTO {
-    private Long id;
+    private Long VehicleId;
     private String licensePlate;
     private String type;
+    //this is user-service attribiute
     private String email;
 }

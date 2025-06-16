@@ -18,7 +18,7 @@ import lombok.Setter;
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long VehicleId;
     private String licensePlate;
     private String type;
     private String email;
