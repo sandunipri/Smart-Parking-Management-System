@@ -33,6 +33,18 @@ public class UserController {
         }
     }
 
+    @GetMapping("/get/{email}")
+    public ResponseEntity<ResponseDTO> getUserByEmail(@PathVariable String email) {
+        UserDTO user = userService.getUserByEmail(email);
+        if (user == null) {
+            return ResponseEntity.status(404)
+                    .body(new ResponseDTO(VarList.Not_Found, "User not found", null));
+        } else {
+            return ResponseEntity.status(200)
+                    .body(new ResponseDTO(VarList.OK, "User retrieved successfully", user));
+        }
+    }
+
     @PostMapping("/register")
     public ResponseEntity<ResponseDTO> register(@RequestBody UserDTO userDTO) {
         int response = userService.saveUser(userDTO);
@@ -69,29 +81,30 @@ public class UserController {
         }
     }
 
-/*    @GetMapping("/api/v1/user/{email}")
-    public ResponseEntity<Boolean> isExistByEmail(@PathVariable String email) {
-       try {
-            boolean exists = userService.existsByEmail(email);
-            return ResponseEntity.status(HttpStatus.OK).body(exists);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
-        }
-        System.out.println("hnbvnbvjhj");
-        try {
-            boolean isExist = userService.existByEmail(email);
-            return ResponseEntity.status(HttpStatus.OK).body(isExist);
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
-        }
-    }*/
-
     @GetMapping("/check")
     public ResponseEntity<Boolean> isExistByEmail(@RequestParam String email) {
         boolean isExist = userService.existByEmail(email);
         return ResponseEntity.ok(isExist);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<ResponseDTO> updateUser(@RequestBody UserDTO userDTO) {
+        boolean isExist = userService.existByEmail(userDTO.getEmail());
+
+        if (!isExist) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ResponseDTO(VarList.Not_Found, "User not found", null));
+        }else {
+            UserDTO updatedUser = userService.updateUser(userDTO);
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(new ResponseDTO(VarList.OK, "User updated successfully", updatedUser));
+        }
+
+
+
+
+
+    }
 
 
 }

@@ -50,17 +50,26 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-/*    @Override
-    public boolean existByEmail(String email) {
-        Optional<User> user = userRepo.findById(email);
-        System.out.println("Checking existence for: " + email);
-        return user.isPresent();
-
-    }*/
-
     @Override
     public boolean existByEmail(String email) {
         return userRepo.findById(email).isPresent();
     }
 
+    @Override
+    public UserDTO getUserByEmail(String email) {
+        if (userRepo.existsByEmail(email)) {
+            return modelMapper.map(userRepo.getReferenceByEmail(email), UserDTO.class);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public UserDTO updateUser(UserDTO userDTO) {
+        User user = userRepo.getReferenceByEmail(userDTO.getEmail());
+        user.setUsername(userDTO.getUsername());
+        user.setRole(userDTO.getRole());
+
+        return modelMapper.map(userRepo.save(user), UserDTO.class);
+    }
 }

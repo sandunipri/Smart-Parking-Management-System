@@ -14,4 +14,8 @@ public interface UserService {
     boolean deleteUser(String email);
 
     boolean existByEmail(String email);
+
+    UserDTO getUserByEmail(String email);
+
+    UserDTO updateUser(UserDTO userDTO);
 }

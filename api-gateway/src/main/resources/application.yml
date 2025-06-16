@@ -35,11 +35,6 @@ spring:
     name: api-gateway
 
   cloud:
-    loadbalancer:
-      ribbon:
-        enabled: false
-      rule: random
-
     gateway:
       server:
         webflux:
