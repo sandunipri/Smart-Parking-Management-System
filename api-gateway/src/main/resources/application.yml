@@ -64,3 +64,10 @@ spring:
                 - name: Path
                   args:
                     pattern: /parking-space-service/**
+
+            - id: payment-service
+              uri: lb://PAYMENT-SERVICE
+              predicates:
+                - name: Path
+                  args:
+                    pattern: /payment-service/**
