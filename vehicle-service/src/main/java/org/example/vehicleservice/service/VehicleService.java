@@ -15,7 +15,4 @@ public interface VehicleService {
     List<VehicleDTO> getVehiclesByEmail(String email);
 
 
-//    List<VehicleDTO> getVehiclesByEmail(String email);
-
-
 }

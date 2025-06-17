@@ -66,20 +66,6 @@ public class VehicleController {
         }
 
     }
-/*
-    @GetMapping("/getVehicleByEmail/{email}")
-    public ResponseEntity<ResponseDTO> getVehicleByEmail(@PathVariable String email){
-        List<VehicleDTO> vehicleList = vehicleService.getVehiclesByEmail(email);
-
-        if (vehicleList.isEmpty()) {
-            return ResponseEntity.status(204)
-                    .body(new ResponseDTO(VarList.No_Content, "No vehicles found for this email", null));
-        } else {
-            return ResponseEntity.status(200)
-                    .body(new ResponseDTO(VarList.OK, "Vehicles retrieved successfully", vehicleList));
-        }
-
-    }*/
 
     @GetMapping("/getVehicleByEmail/{email}")
     public ResponseEntity<ResponseDTO> getVehicleByEmail(@PathVariable String email){

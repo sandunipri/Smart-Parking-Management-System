@@ -1,8 +1,5 @@
 package org.example.vehicleservice.service.impl;
 
-import feign.FeignException;
-import jakarta.ws.rs.NotFoundException;
-import org.example.userservice.dto.UserDTO;
 import org.example.vehicleservice.dto.VehicleDTO;
 import org.example.vehicleservice.entity.Vehicle;
 import org.example.vehicleservice.feign.ClientVehicle;
@@ -15,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,19 +58,6 @@ public class VehicleServiceImpl implements VehicleService {
         return modelMapper.map(vehicle, VehicleDTO.class);
     }
 
-
-/*    @Override
-    public List<VehicleDTO> getVehiclesByEmail(String email) {
-        List<Vehicle> vehicles = vehicleRepo.findByEmail(email);
-
-        if (vehicles == null || vehicles.isEmpty()) {
-            return new ArrayList<>();
-        }
-
-        return vehicles.stream()
-                .map(vehicle -> modelMapper.map(vehicle, VehicleDTO.class))
-                .collect(Collectors.toList());
-    }*/
 
     @Override
     public List<VehicleDTO> getVehiclesByEmail(String email) {
