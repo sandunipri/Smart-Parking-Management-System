@@ -17,11 +17,9 @@ import java.util.List;
 @RequestMapping("/api/v1/vehicle")
 public class VehicleController {
     private final VehicleService vehicleService;
-    private final ClientVehicle clientVehicle;
 
-    public VehicleController(VehicleRepo vehicleRepo, VehicleService vehicleService, ClientVehicle clientVehicle) {
+    public VehicleController(VehicleRepo vehicleRepo, VehicleService vehicleService) {
         this.vehicleService = vehicleService;
-        this.clientVehicle = clientVehicle;
     }
 
     @PostMapping("/register")

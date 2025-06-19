@@ -66,3 +66,10 @@ spring:
                 - name: Path
                   args:
                     pattern: /payment-service/**
+
+            - id: security-service
+              uri: lb://SECURITY-SERVICE
+              predicates:
+                - name: Path
+                  args:
+                      pattern: /security-service/**

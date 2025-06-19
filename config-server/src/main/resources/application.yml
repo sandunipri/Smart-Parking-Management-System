@@ -1,0 +1,12 @@
+server:
+  port: 8888
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/sandunipri/SPMS-Config-Repo.git
+          default-label: master
+  application:
+    name: config-server
