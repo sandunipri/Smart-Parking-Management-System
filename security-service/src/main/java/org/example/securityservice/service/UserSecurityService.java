@@ -1,5 +1,6 @@
 package org.example.securityservice.service;
 
+import org.example.securityservice.dto.ResponseDTO;
 import org.example.securityservice.dto.UserDTO;
 import org.example.securityservice.feign.UserSecurity;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +23,8 @@ public class UserSecurityService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         try {
-            ResponseEntity<UserDTO> response = userSecurity.isExistByEmail(email);
-            UserDTO userDTO = response.getBody();
+            ResponseEntity<UserDTO> response = userSecurity.getUserByEmail(email);
+            UserDTO userDTO =  response.getBody();
 
             if (userDTO == null) {
                 throw new RuntimeException("User not found: " + email);
@@ -42,7 +43,7 @@ public class UserSecurityService implements UserDetailsService {
 
     public UserDTO getUser(String username) throws UsernameNotFoundException {
         try {
-            ResponseEntity<UserDTO> response = userSecurity.isExistByEmail(username);
+            ResponseEntity<UserDTO> response = userSecurity.getUserByEmail(username);
             return response.getBody();
         } catch (Exception e) {
             throw new RuntimeException("Failed to load user details: " + username, e);

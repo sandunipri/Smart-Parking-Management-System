@@ -46,6 +46,7 @@ spring:
                   args:
                     pattern: /user-service/**
 
+
             - id: vehicle-service
               uri: lb://VEHICLE-SERVICE
               predicates:

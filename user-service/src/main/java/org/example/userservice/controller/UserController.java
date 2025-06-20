@@ -1,15 +1,16 @@
 package org.example.userservice.controller;
 
+import org.example.userservice.dto.AuthDTO;
 import org.example.userservice.dto.ResponseDTO;
 import org.example.userservice.dto.UserDTO;
 import org.example.userservice.service.UserService;
+import org.example.userservice.util.JwtUtil;
 import org.example.userservice.util.VarList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -17,8 +18,11 @@ public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
+    private final JwtUtil jwtUtil;
+
+    public UserController(UserService userService, JwtUtil jwtUtil) {
         this.userService = userService;
+        this.jwtUtil = jwtUtil;
     }
 
     @GetMapping("/getAll")
@@ -34,14 +38,14 @@ public class UserController {
     }
 
     @GetMapping("/get/{email}")
-    public ResponseEntity<ResponseDTO> getUserByEmail(@PathVariable String email) {
+    public ResponseEntity<UserDTO> getUserByEmail(@PathVariable String email) {
         UserDTO user = userService.getUserByEmail(email);
         if (user == null) {
             return ResponseEntity.status(404)
-                    .body(new ResponseDTO(VarList.Not_Found, "User not found", null));
+                    .body(null);
         } else {
             return ResponseEntity.status(200)
-                    .body(new ResponseDTO(VarList.OK, "User retrieved successfully", user));
+                    .body(user);
         }
     }
 
@@ -51,8 +55,12 @@ public class UserController {
 
         switch (response) {
             case VarList.Created -> {
+                String token = jwtUtil.generateToken(userDTO);
+                AuthDTO authDTO = new AuthDTO();
+                authDTO.setToken(token);
+                authDTO.setUser(userDTO);
                 return ResponseEntity.status(201)
-                        .body(new ResponseDTO(VarList.Created, "User created successfully", userDTO));
+                        .body(new ResponseDTO(VarList.Created, "User created successfully", authDTO));
             }
             case VarList.Not_Acceptable -> {
                 return ResponseEntity.status(406)
@@ -68,6 +76,35 @@ public class UserController {
             }
         }
     }
+
+    /*@PostMapping("/register")
+    public ResponseEntity<ResponseDTO> registerUser(@RequestBody UserDTO userDTO) {
+        try {
+            int response = userService.saveUser(userDTO);
+            switch (response) {
+                case VarList.Created:
+                    String token = jwtUtil.generateToken(userDTO);
+                    AuthDTO authDTO = new AuthDTO();
+                    authDTO.setUserDTO(userDTO);
+                    authDTO.setToken(token);
+
+                    return ResponseEntity.status(HttpStatus.OK)
+                            .body(new ResponseDTO(VarList.OK, "Successfully", null));
+                case VarList.Not_Acceptable:
+                    return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                            .body(new ResponseDTO(VarList.Not_Acceptable, "Email already used", null));
+                case VarList.Bad_Request:
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                            .body(new ResponseDTO(VarList.Bad_Request, "Invalid data provided", null));
+                default:
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                            .body(new ResponseDTO(VarList.Internal_Server_Error, "An error occurred", null));
+            }
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ResponseDTO(VarList.Internal_Server_Error, e.getMessage(),null));
+        }
+    }*/
 
     @DeleteMapping("/delete/{email}")
     public ResponseEntity<ResponseDTO> deleteUser(@PathVariable String email) {
@@ -105,6 +142,8 @@ public class UserController {
 
 
     }
+
+
 
 
 }

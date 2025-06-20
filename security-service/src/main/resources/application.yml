@@ -1,8 +1,13 @@
 server:
-  port: 8081
+  port: 8090
 
 spring:
   application:
     name: security-service
   config:
     import: "optional:configserver:http://localhost:8888"
+
+  security:
+    user:
+      name: disabled
+      password: disabled

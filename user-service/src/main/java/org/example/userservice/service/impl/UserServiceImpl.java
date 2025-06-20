@@ -8,6 +8,7 @@ import org.example.userservice.util.VarList;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +29,9 @@ public class UserServiceImpl implements UserService {
        if (isExist){
            return VarList.Unauthorized;
        }else {
+           BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+           userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+
            User user = modelMapper.map(userDTO, User.class);
            userRepo.save(user);
            return VarList.Created;
@@ -58,7 +62,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO getUserByEmail(String email) {
         if (userRepo.existsByEmail(email)) {
-            return modelMapper.map(userRepo.getReferenceByEmail(email), UserDTO.class);
+            User user = userRepo.getReferenceByEmail(email);
+            return modelMapper.map(user, UserDTO.class);
         } else {
             return null;
         }
