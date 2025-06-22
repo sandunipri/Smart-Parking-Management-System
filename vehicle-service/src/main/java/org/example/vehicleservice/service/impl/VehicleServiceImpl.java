@@ -53,8 +53,8 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public VehicleDTO getVehicleLicenseId(String licensePlate) {
-        Vehicle vehicle = vehicleRepo.findByLicensePlate(licensePlate);
+    public VehicleDTO getVehicleByNumber(String vehicleNumber) {
+        Vehicle vehicle = vehicleRepo.findByVehicleNumber(vehicleNumber);
         return modelMapper.map(vehicle, VehicleDTO.class);
     }
 
@@ -67,6 +67,34 @@ public class VehicleServiceImpl implements VehicleService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public boolean existByVehicleNumber(VehicleDTO vehicleDTO) {
+        return vehicleRepo.existsByVehicleNumber(vehicleDTO.getVehicleNumber());
 
+    }
+
+    @Override
+    public VehicleDTO updateVehicle(VehicleDTO vehicleDTO) {
+        Vehicle vehicle = vehicleRepo.findByVehicleNumber(vehicleDTO.getVehicleNumber());
+        if (vehicle != null) {
+            vehicle.setType(vehicleDTO.getType());
+            vehicleRepo.save(vehicle);
+            return modelMapper.map(vehicle, VehicleDTO.class);
+        }
+        return null;
+
+
+    }
+
+    @Override
+    public boolean deleteVehicle(String vehicleNumber) {
+        Vehicle vehicle = vehicleRepo.findByVehicleNumber(vehicleNumber);
+        if (vehicle != null) {
+            vehicleRepo.delete(vehicle);
+            return true;
+        }
+        return false;
+
+    }
 
 }

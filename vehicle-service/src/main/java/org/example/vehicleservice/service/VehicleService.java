@@ -10,9 +10,14 @@ public interface VehicleService {
 
     List<VehicleDTO> getAllVehicles();
 
-    VehicleDTO getVehicleLicenseId(String licensePlate);
+    VehicleDTO getVehicleByNumber(String vehicleNumber);
 
     List<VehicleDTO> getVehiclesByEmail(String email);
 
+    boolean existByVehicleNumber(VehicleDTO vehicleDTO);
+
+    VehicleDTO updateVehicle(VehicleDTO vehicleDTO);
+
+    boolean deleteVehicle(String vehicleNumber);
 
 }

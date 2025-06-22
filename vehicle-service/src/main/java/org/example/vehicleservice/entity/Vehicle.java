@@ -19,7 +19,7 @@ public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long VehicleId;
-    private String licensePlate;
+    private String vehicleNumber ;
     private String type;
     private String email;
 }

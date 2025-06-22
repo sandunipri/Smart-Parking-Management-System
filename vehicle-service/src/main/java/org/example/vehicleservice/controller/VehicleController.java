@@ -52,9 +52,9 @@ public class VehicleController {
         }
     }
 
-    @GetMapping("/get/{licensePlate}")
-    public ResponseEntity<ResponseDTO> getVehicleById(@PathVariable String licensePlate){
-        VehicleDTO vehicle = vehicleService.getVehicleLicenseId(licensePlate);
+    @GetMapping("/get/{vehicleNumber}")
+    public ResponseEntity<ResponseDTO> getVehicleById(@PathVariable String vehicleNumber){
+        VehicleDTO vehicle = vehicleService.getVehicleByNumber(vehicleNumber);
         if (vehicle == null) {
             return ResponseEntity.status(404)
                     .body(new ResponseDTO(VarList.Not_Found, "Vehicle not found", null));
@@ -78,5 +78,33 @@ public class VehicleController {
         }
     }
 
+    @PutMapping("/updateVehicle")
+    public ResponseEntity<ResponseDTO> updateVehicle(@RequestBody VehicleDTO vehicleDTO){
+        boolean isExist = vehicleService.existByVehicleNumber(vehicleDTO);
+
+        if (!isExist) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ResponseDTO(VarList.Not_Found, "Vehicle not found", null));
+        }else {
+            VehicleDTO updatedVehicle = vehicleService.updateVehicle(vehicleDTO);
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(new ResponseDTO(VarList.OK, "Vehicle updated successfully", vehicleDTO));
+
+        }
+
+    }
+
+    @DeleteMapping("/deleteVehicle/{vehicleNumber}")
+    public ResponseEntity<ResponseDTO> deleteVehicle(@PathVariable String vehicleNumber){
+        boolean isDeleted = vehicleService.deleteVehicle(vehicleNumber);
+
+        if (isDeleted) {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(new ResponseDTO(VarList.OK, "Vehicle deleted successfully", null));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ResponseDTO(VarList.Not_Found, "Vehicle not found", null));
+        }
+    }
 
 }
