@@ -1,16 +1,27 @@
 package org.example.parkingspaceservice.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.example.parkingspaceservice.dto.ParkingSpaceDTO;
+import org.example.parkingspaceservice.dto.ResponseDTO;
+import org.example.parkingspaceservice.service.ParkingSpaceSerice;
+import org.example.parkingspaceservice.util.VarList;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/parking-space")
 public class ParkingSpaceServiceController {
+    private final ParkingSpaceSerice parkingSpaceService;
 
-    @GetMapping("/all")
-    public String getAllParkingSpaces() {
-        return "All Parking Spaces";
+    public ParkingSpaceServiceController(ParkingSpaceSerice parkingSpaceService) {
+        this.parkingSpaceService = parkingSpaceService;
     }
+
+//    @PostMapping("/saveParkingSpace")
+//    public ResponseEntity<ResponseDTO> saveParkingSpace(@RequestHeader("Authorization") String Authorization , @RequestBody ParkingSpaceDTO parkingSpaceDTO) {
+//
+//
+//    }
+
+
 
 }

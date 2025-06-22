@@ -2,7 +2,6 @@ package org.example.vehicleservice.controller;
 
 import org.example.vehicleservice.dto.ResponseDTO;
 import org.example.vehicleservice.dto.VehicleDTO;
-import org.example.vehicleservice.feign.ClientVehicle;
 import org.example.vehicleservice.repo.VehicleRepo;
 import org.example.vehicleservice.service.VehicleService;
 import org.example.vehicleservice.util.VarList;

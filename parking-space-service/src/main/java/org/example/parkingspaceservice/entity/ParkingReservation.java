@@ -19,11 +19,11 @@ public class ParkingReservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    Long userId;
-    Long vehicleId;
-    Long parkingSpaceId;
-    LocalDateTime startTime;
-    LocalDateTime endTime;
-    Boolean isActive;
+    private Long id;
+    private String email;
+    private String vehicleNumber;
+    private Long parkingSpaceId;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private Boolean isActive;
 }

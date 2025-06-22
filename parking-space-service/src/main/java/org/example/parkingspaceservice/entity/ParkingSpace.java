@@ -16,10 +16,12 @@ import lombok.Setter;
 public class ParkingSpace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String location;
-    String slotNumber;
-    Boolean isAvailable;
-    String type;
-    Double hourlyRate;
+    private Long id;
+    private String location;
+    private String slotNumber;
+    private Boolean isAvailable;
+    private String type;
+    private Double hourlyRate;
+    private String email;
+
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class VehicleDTO {
     private Long VehicleId;
-    private String vehicleNumber ;
+    private String vehicleNumber;
     private String type;
     //this is user-service attribiute
     private String email;

@@ -6,17 +6,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Component
 
-public class ParkingSpaceDTO {
+public class ParkingReservationDTO {
     private Long id;
-    private String location;
-    private String slotNumber;
-    private Boolean isAvailable;
-    private String type;
-    private Double hourlyRate;
+    private String email;
+    private String vehicleNumber;
+    private Long parkingSpaceId;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private Boolean isActive;
 }
