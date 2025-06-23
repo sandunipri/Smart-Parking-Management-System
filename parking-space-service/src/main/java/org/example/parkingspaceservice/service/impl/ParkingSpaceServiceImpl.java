@@ -19,13 +19,14 @@ public class ParkingSpaceServiceImpl implements ParkingSpaceService {
     private final ParkingSpaceRepo parkingSpaceRepo;
     private final UserParkingSpace userParkingSpace;
 
+    @Autowired
+    ModelMapper modelMapper;
 
     public ParkingSpaceServiceImpl(ParkingSpaceRepo parkingSpaceRepo, UserParkingSpace userParkingSpace) {
         this.parkingSpaceRepo = parkingSpaceRepo;
         this.userParkingSpace = userParkingSpace;
     }
-    @Autowired
-    ModelMapper modelMapper;
+
 
     @Override
     public int saveParkingSpace(ParkingSpaceDTO parkingSpaceDTO) {
