@@ -1,10 +1,10 @@
-package org.example.parkingspaceservice.entity;
+package org.example.parkingreservationservice.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
@@ -12,13 +12,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
+@Component
 
-@Entity
-@Table(name = "parking_reservation")
-public class ParkingReservation {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ParkingReservationDTO {
     private Long id;
     private String email;
     private String vehicleNumber;
