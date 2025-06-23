@@ -37,6 +37,52 @@ public class VehicleController {
         };
     }
 
+/*
+    @PostMapping("/register")
+    public ResponseEntity<ResponseDTO> registerVehicle(@RequestHeader("Authorization") String Authorization , @RequestBody VehicleDTO vehicleDto) {
+        String email = vehicleService.getUserEmailByToken(Authorization.substring(7));
+
+        if (email == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(new ResponseDTO(VarList.Unauthorized, "Invalid Token", null));
+        }
+
+        vehicleDto.setEmail(email);
+
+        // Save the vehicle
+        int response = vehicleService.saveVehicle(vehicleDto);
+
+        if (response == VarList.Created) {
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(new ResponseDTO(VarList.Created, "Vehicle saved successfully", vehicleDto));
+        } else if (response == VarList.Not_Acceptable) {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                    .body(new ResponseDTO(VarList.Not_Acceptable, "Email not found in User Service", null));
+        } else if (response == VarList.Bad_Request) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ResponseDTO(VarList.Bad_Request, "Invalid data provided", null));
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ResponseDTO(VarList.Internal_Server_Error, "Server error", null));
+        }
+
+     int response = vehicleService.saveVehicle(vehicleDto);
+
+        return switch (response) {
+            case VarList.Created -> ResponseEntity.status(201)
+                    .body(new ResponseDTO(VarList.Created, "Vehicle saved successfully", vehicleDto));
+            case VarList.Not_Acceptable -> ResponseEntity.status(406)
+                    .body(new ResponseDTO(VarList.Not_Acceptable, "Email not found in User Service", null));
+            case VarList.Bad_Request -> ResponseEntity.status(400)
+                    .body(new ResponseDTO(VarList.Bad_Request, "Invalid data provided", null));
+            default -> ResponseEntity.status(500)
+                    .body(new ResponseDTO(VarList.Internal_Server_Error, "Server error", null));
+        };
+
+    }
+
+*/
+
     @GetMapping("/getAllVehicles")
     public ResponseEntity<ResponseDTO> getAllVehicles() {
         List<VehicleDTO> vehicleList = vehicleService.getAllVehicles();

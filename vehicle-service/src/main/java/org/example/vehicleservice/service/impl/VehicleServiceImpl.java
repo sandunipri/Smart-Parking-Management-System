@@ -39,10 +39,10 @@ public class VehicleServiceImpl implements VehicleService {
                 vehicleRepo.save(vehicle);
                 return VarList.Created;
             } else {
-                return VarList.Not_Acceptable; // Email doesn't exist
+                return VarList.Not_Acceptable;
             }
         } catch (Exception e) {
-            e.printStackTrace(); // log the error
+            e.printStackTrace();
             return VarList.Internal_Server_Error;
         }
     }
@@ -96,5 +96,6 @@ public class VehicleServiceImpl implements VehicleService {
         return false;
 
     }
+
 
 }

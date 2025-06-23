@@ -19,4 +19,5 @@ public class ParkingSpaceDTO {
     private Boolean isAvailable;
     private String type;
     private Double hourlyRate;
+    private String email;
 }

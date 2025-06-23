@@ -11,6 +11,7 @@ public class VarList {
     public static final int No_Content = 204;
     public static final int Reset_Content = 205;
     public static final int Partial_Content = 206;
+    public static final int Available = 250;
     public static final int Multiple_Choices = 300;
     public static final int Moved_Permanently = 301;
     public static final int Found = 302;
