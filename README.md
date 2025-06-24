@@ -30,9 +30,9 @@ This is a microservices-based Smart Parking Management System developed using Sp
 
 - [Postman Collection](./smart-parking-system.postman_collection.json)
 
-- ![Eureka Dashboard]
+##  Eureka Dashboard
   
-- (./docs/screenshots/eureka_dashboard-01.png)
+- ![Eureka Dashboard](./docs/screenshots/eureka_dashboard-01.png)
 - [Eureka Dashboard](./docs/screenshots/eureka_dashboard-02.png)  
 
  
