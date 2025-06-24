@@ -28,9 +28,11 @@ This is a microservices-based Smart Parking Management System developed using Sp
 
 - [Postman Collection](./postman_collection.json)
 - ![Eureka Dashboard](./docs/screenshots/eureka_dashboard.png)
-- 
-![Screenshot (353)](https://github.com/user-attachments/assets/910d6b4b-3bcf-4170-b554-f54b31d908ab)
-![Screenshot (354)](https://github.com/user-attachments/assets/1ba63c3a-5d99-484f-9c3e-96e05eac965e)
+
+- ![Screenshot (354)](https://github.com/user-attachments/assets/783e4f62-cf6d-42eb-81c7-68d0da117e5d)
+- ![Screenshot (353)](https://github.com/user-attachments/assets/f69ec51e-7d36-4868-9c2d-8604b463c40a)
+
+ 
 ## How to Run the Project
 
 1. Clone the repository:
