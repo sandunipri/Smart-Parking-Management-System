@@ -4,12 +4,14 @@ This is a microservices-based Smart Parking Management System developed using Sp
 
 ## Project Structure
 
-- `user-service/` – Manages user registration, authentication, and user roles
-- `parking-reservation-service/` – Handles parking reservations, active sessions, and history
-- `parking-space-service/` – Manages available parking slots and their details
-- `api-gateway/` – Central gateway for routing and securing API requests
-- `discovery-server/` – Eureka service registry
+- `eureka-server/` – Eureka service registry
 - `config-server/` – Centralized configuration service
+- `security-service/` – Manages authentication and authorization (JWT-based)
+- `api-gateway/` – Central gateway for routing and securing API requests
+- `user-service/` – Manages user registration, authentication, and user roles
+- `vehicle-service/` – Manages vehicle records associated with registered users
+- `parking-space-service/` – Manages available parking slots and their details
+- `parking-reservation-service/` – Handles parking reservations, active sessions, and history
 - `docs/screenshots/` – Screenshots and documentation assets
 
 ## Technologies Used
@@ -18,7 +20,7 @@ This is a microservices-based Smart Parking Management System developed using Sp
 - Spring Boot
 - Spring Cloud (Eureka, Config Server, OpenFeign)
 - Spring Security with JWT
-- PostgreSQL / MySQL
+- MySQL
 - API Gateway
 - Postman
 - Maven
@@ -27,14 +29,17 @@ This is a microservices-based Smart Parking Management System developed using Sp
 ## Resources
 
 - [Postman Collection](./smart-parking-system.postman_collection.json)
-- ![Eureka Dashboard](./docs/screenshots/eureka_dashboard-01.png)
-- ![Eureka Dashboard](./docs/screenshots/eureka_dashboard-02.png)  
+
+- ![Eureka Dashboard]
+  
+- (./docs/screenshots/eureka_dashboard-01.png)
+- [Eureka Dashboard](./docs/screenshots/eureka_dashboard-02.png)  
 
  
 ## How to Run the Project
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/smart-parking-system.git
-   cd smart-parking-system
+   git clone [https://github.com/sandunipri/Smart-Parking-Management-System.git]
+   cd Smart-Parking-Management-System
 
