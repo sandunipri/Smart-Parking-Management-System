@@ -31,8 +31,10 @@ This is a microservices-based Smart Parking Management System developed using Sp
 This project uses centralized configuration management via **Spring Cloud Config Server**. All service configurations are maintained in a separate Git-based repository:
 
 - Repository Name: `SPMS-config-repo`
-- Repository Link: [SPMS-config-repo](https://github.com/sandunipri/SPMS-Config-Repo.git)
-
+- Repository Link:
+  ```bash
+  git clone https://github.com/sandunipri/SPMS-Config-Repo.git
+  
 Each microservice retrieves its configuration at startup from this external repository.
 
 ## Resources
