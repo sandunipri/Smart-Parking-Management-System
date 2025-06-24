@@ -2,7 +2,6 @@ package org.example.parkingreservationservice.service.impl;
 
 
 import org.example.parkingreservationservice.dto.ParkingReservationDTO;
-import org.example.parkingreservationservice.dto.ResponseDTO;
 import org.example.parkingreservationservice.entity.ParkingReservation;
 import org.example.parkingreservationservice.feign.ParkingSpaceFeignClient;
 import org.example.parkingreservationservice.feign.UserFeignClient;
@@ -16,6 +15,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ParkingReservationImpl implements ParkingReservationService {
@@ -60,13 +63,59 @@ public class ParkingReservationImpl implements ParkingReservationService {
 
 
        }catch (Exception e){
-            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error");
         }
 
+    }
 
+    @Override
+    public List<ParkingReservationDTO> getUserReservations(String userEmail) {
+        List<ParkingReservation> reservations = parkingReservationRepo.findAllByEmail(userEmail);
+
+        if (reservations.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No reservations found for user: " + userEmail);
+        }
+
+        return modelMapper.map(reservations, new org.modelmapper.TypeToken<List<ParkingReservationDTO>>() {
+        }.getType());
 
     }
 
+    @Override
+    public boolean endReservation(Long reservationId) {
+        Optional<ParkingReservation> optionalReservation = parkingReservationRepo.findById(reservationId);
+
+        if (optionalReservation.isPresent()) {
+            ParkingReservation reservation = optionalReservation.get();
+
+            if (reservation.getEndTime() != null) {
+                return false;
+            }
+            reservation.setEndTime(LocalDateTime.now());
+            parkingReservationRepo.save(reservation);
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public ParkingReservationDTO getActiveReservationByEmail(String userEmail) {
+        Optional<ParkingReservation> active = parkingReservationRepo
+                .findTopByEmailAndIsActiveTrueOrderByStartTimeDesc(userEmail);
+
+        return active.map(reservation -> modelMapper.map(reservation, ParkingReservationDTO.class)).orElse(null);
+    }
+
+    @Override
+    public boolean cancelReservation(Long id) {
+        Optional<ParkingReservation> reservation = parkingReservationRepo.findById(id);
+        if (reservation.isPresent()) {
+            parkingReservationRepo.delete(reservation.get());
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
