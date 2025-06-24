@@ -33,7 +33,7 @@ This is a microservices-based Smart Parking Management System developed using Sp
 ##  Eureka Dashboard
   
 - ![Eureka Dashboard](./docs/screenshots/eureka_dashboard-01.png)
-- [Eureka Dashboard](./docs/screenshots/eureka_dashboard-02.png)  
+- ![Eureka Dashboard](./docs/screenshots/eureka_dashboard-02.png)  
 
  
 ## How to Run the Project
