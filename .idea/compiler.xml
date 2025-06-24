@@ -11,7 +11,7 @@
         <module name="eureka-server" />
         <module name="config-server" />
       </profile>
-      <profile name="Annotation profile for parking-reservation-service" enabled="true">
+      <profile name="Annotation profile for payment-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -19,8 +19,8 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="parking-reservation-service" />
-        <module name="user-service" />
         <module name="payment-service" />
+        <module name="user-service" />
         <module name="vehicle-service" />
         <module name="parking-space-service" />
         <module name="security-service" />

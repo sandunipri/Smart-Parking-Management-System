@@ -1,0 +1,753 @@
+{
+	"info": {
+		"_postman_id": "d2f578eb-ca7b-4fc0-a11c-b7d4df857b4c",
+		"name": "smart-parking-system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40188650"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "save user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"Sanduni\",\r\n  \"email\": \"Sanduni@gmail.com\",\r\n  \"password\": \"sanduni2001\",\r\n  \"role\": \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user-service/api/v1/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user-service",
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user-service/api/v1/user/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user-service",
+								"api",
+								"v1",
+								"user",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/user-service/api/v1/user/delete/haruni@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user-service",
+								"api",
+								"v1",
+								"user",
+								"delete",
+								"haruni@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get userByEmail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/user-service/api/v1/user/get/Sanduni@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user-service",
+								"api",
+								"v1",
+								"user",
+								"get",
+								"Sanduni@gmail.com"
+							],
+							"query": [
+								{
+									"key": "email ",
+									"value": "Sandunigmail.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"priyadarshani\",\r\n  \"email\": \"Sanduni@gmail.com\",\r\n  \"password\": \"Sanduni12345#\",\r\n  \"role\": \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user-service/api/v1/user/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user-service",
+								"api",
+								"v1",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "security",
+			"item": [
+				{
+					"name": "authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"Sanduni@gmail.com\",\r\n    \"password\":\"sanduni2001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/security-service/api/v1/auth/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"security-service",
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user-service/api/v1/user/check?email=Sanduni@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user-service",
+								"api",
+								"v1",
+								"user",
+								"check"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "Sanduni@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vehicle",
+			"item": [
+				{
+					"name": "save vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"vehicleNumber\": \"ABC-12345\",\r\n  \"type\": \"Car\",\r\n  \"email\": \"viraj@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/vehicle-service/api/v1/vehicle/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicle-service",
+								"api",
+								"v1",
+								"vehicle",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all vehicles",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"Sanduni\",\r\n  \"email\": \"Sandunigmail.com\",\r\n  \"password\": \"Sanduni12345#\",\r\n  \"role\": \"USER\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/vehicle-service/api/v1/vehicle/getAllVehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicle-service",
+								"api",
+								"v1",
+								"vehicle",
+								"getAllVehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get vehicle by vehicleNumber",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/vehicle-service/api/v1/vehicle/get/xyz-12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicle-service",
+								"api",
+								"v1",
+								"vehicle",
+								"get",
+								"xyz-12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get vehicle by email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/vehicle-service/api/v1/vehicle/getVehicleByEmail/Sanduni@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicle-service",
+								"api",
+								"v1",
+								"vehicle",
+								"getVehicleByEmail",
+								"Sanduni@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Vehicle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"vehicleNumber\": \"xyz-12345\",\r\n  \"type\": \"Jeep\",\r\n  \"email\": \"Sanduni@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/vehicle-service/api/v1/vehicle/updateVehicle",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicle-service",
+								"api",
+								"v1",
+								"vehicle",
+								"updateVehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete vehicle",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"vehicleNumber\": \"ABC-1234\",\r\n  \"type\": \"jeep\",\r\n  \"email\": \"viraj@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/vehicle-service/api/v1/vehicle/deleteVehicle/ABC-12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicle-service",
+								"api",
+								"v1",
+								"vehicle",
+								"deleteVehicle",
+								"ABC-12345"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "parking space",
+			"item": [
+				{
+					"name": "save parking-space",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"location\": \"Level 2 - b-Block\",\r\n  \"slotNumber\": \"A13\",\r\n  \"isAvailable\": true,\r\n  \"type\": \"Compact\",\r\n  \"hourlyRate\": 150.0,\r\n  \"email\": \"Sanduni@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/parking-space-service/api/v1/parking-space/saveParkingSpace",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-space-service",
+								"api",
+								"v1",
+								"parking-space",
+								"saveParkingSpace"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get available spaces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-space-service/api/v1/parking-space/spacesAvailable",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-space-service",
+								"api",
+								"v1",
+								"parking-space",
+								"spacesAvailable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get parking-space by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"location\": \"Level 2 - A Block\",\r\n  \"slotNumber\": \"A12\",\r\n  \"isAvailable\": false,\r\n  \"type\": \"Compact\",\r\n  \"hourlyRate\": 150.0,\r\n  \"email\": \"priyadarshanigmail.com\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/parking-space-service/api/v1/parking-space//space/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-space-service",
+								"api",
+								"v1",
+								"parking-space",
+								"",
+								"space",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all parkingSpaces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-space-service/api/v1/parking-space/allParkingSpaces",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-space-service",
+								"api",
+								"v1",
+								"parking-space",
+								"allParkingSpaces"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update parking space",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"id\": 1,\r\n    \"location\": \"Level 2 - B Block\",\r\n    \"slotNumber\": \"A12\",\r\n    \"isAvailable\": false,\r\n    \"type\": \"Compact\",\r\n    \"hourlyRate\": 1500.0,\r\n    \"email\": \"viraj@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/parking-space-service/api/v1/parking-space/space/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-space-service",
+								"api",
+								"v1",
+								"parking-space",
+								"space",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete parking space",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-space-service/api/v1/parking-space/space/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-space-service",
+								"api",
+								"v1",
+								"parking-space",
+								"space",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "parking-reservation",
+			"item": [
+				{
+					"name": "reserve parkingSpace",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"viraj@gmail.com\",\r\n  \"vehicleNumber\": \"ABC-12345\",\r\n  \"parkingSpaceId\": 2,\r\n  \"startTime\": \"2025-06-25T09:00:00\",\r\n  \"endTime\": \"2025-06-25T11:00:00\",\r\n  \"isActive\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/parking-reservation-service/api/v1/parking-reservation/reserve",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-reservation-service",
+								"api",
+								"v1",
+								"parking-reservation",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-space-service/api/v1/parking-space/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-space-service",
+								"api",
+								"v1",
+								"parking-space",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get reservation by userEmail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"viraj@gmail.com\",\r\n  \"vehicleNumber\": \"ABC-12345\",\r\n  \"parkingSpaceId\": 3,\r\n  \"startTime\": \"2025-06-25T09:00:00\",\r\n  \"endTime\": \"2025-06-25T11:00:00\",\r\n  \"isActive\": true\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/parking-reservation-service/api/v1/parking-reservation/user/viraj@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-reservation-service",
+								"api",
+								"v1",
+								"parking-reservation",
+								"user",
+								"viraj@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check reservation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-reservation-service/api/v1/parking-reservation/end/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-reservation-service",
+								"api",
+								"v1",
+								"parking-reservation",
+								"end",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "active reservation in user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-reservation-service/api/v1/parking-reservation/active/viraj@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-reservation-service",
+								"api",
+								"v1",
+								"parking-reservation",
+								"active",
+								"viraj@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-reservation-service/api/v1/parking-reservation/cancel/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-reservation-service",
+								"api",
+								"v1",
+								"parking-reservation",
+								"cancel",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
