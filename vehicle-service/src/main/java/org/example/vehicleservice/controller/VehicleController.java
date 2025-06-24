@@ -152,4 +152,11 @@ public class VehicleController {
         }
     }
 
+    @GetMapping("/getFeign/{vehicleNumber}")
+    public ResponseEntity<Boolean> getVehicleByNumber(@PathVariable String vehicleNumber){
+        boolean exists = vehicleService.existsByNumber(vehicleNumber);
+        return ResponseEntity.ok(exists);
+    }
+
+
 }

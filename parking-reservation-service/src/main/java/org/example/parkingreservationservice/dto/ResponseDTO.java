@@ -10,8 +10,13 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @Data
 @Component
+
 public class ResponseDTO {
     private int code;
     private String message;
     private Object data;
+
+    public ResponseDTO(String parkingReservedSuccessfully, ParkingReservationDTO parkingReservationDTO) {
+
+    }
 }

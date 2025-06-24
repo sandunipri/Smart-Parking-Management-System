@@ -50,3 +50,10 @@ spring:
                 - name: Path
                   args:
                       pattern: /security-service/**
+
+            - id: parking-reservation-service
+              uri: lb://PARKING-RESERVATION-SERVICE
+              predicates:
+                - name: Path
+                  args:
+                    pattern: /parking-reservation-service/**

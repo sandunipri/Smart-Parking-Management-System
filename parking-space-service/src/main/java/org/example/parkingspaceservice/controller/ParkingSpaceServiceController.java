@@ -108,4 +108,11 @@ public class ParkingSpaceServiceController {
         return ResponseEntity.ok(
                 new ResponseDTO(VarList.OK, "Parking Space deleted successfully", null));
     }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Boolean> existParkingSpaceById(@PathVariable Long id) {
+        boolean exists = parkingSpaceService.existsById(id);
+        return ResponseEntity.ok(exists);
+    }
 }

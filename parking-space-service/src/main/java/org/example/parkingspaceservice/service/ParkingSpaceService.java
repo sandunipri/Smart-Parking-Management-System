@@ -16,4 +16,6 @@ public interface ParkingSpaceService {
     ParkingSpaceDTO updateParkingSpace(Long id, ParkingSpaceDTO parkingSpaceDTO);
 
     boolean deleteParkingSpace(Long id);
+
+    boolean existsById(Long id);
 }

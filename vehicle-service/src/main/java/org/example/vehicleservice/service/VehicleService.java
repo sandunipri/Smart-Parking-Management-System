@@ -20,4 +20,7 @@ public interface VehicleService {
 
     boolean deleteVehicle(String vehicleNumber);
 
+    boolean existsByNumber(String vehicleNumber);
 }
+
+

@@ -97,5 +97,10 @@ public class VehicleServiceImpl implements VehicleService {
 
     }
 
+    @Override
+    public boolean existsByNumber(String vehicleNumber) {
+        return vehicleRepo.existsByVehicleNumber(vehicleNumber);
+    }
+
 
 }

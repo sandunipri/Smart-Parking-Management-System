@@ -94,5 +94,11 @@ public class ParkingSpaceServiceImpl implements ParkingSpaceService {
 
     }
 
+    @Override
+    public boolean existsById(Long id) {
+        return parkingSpaceRepo.existsById(id);
+
+    }
+
 
 }

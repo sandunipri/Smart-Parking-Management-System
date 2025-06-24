@@ -16,9 +16,9 @@ import java.time.LocalDateTime;
 
 public class ParkingReservationDTO {
     private Long id;
-    private String email;
-    private String vehicleNumber;
-    private Long parkingSpaceId;
+    private String email;//this is coming in user-service
+    private String vehicleNumber;//this is coming form vehicle-service
+    private Long parkingSpaceId;//this is coming from parking-space-service
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private Boolean isActive;
