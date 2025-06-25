@@ -1,6 +1,6 @@
 # Smart Parking Management System
 
-This is a microservices-based Smart Parking Management System developed using Spring Boot and Spring Cloud. The system manages user authentication, parking space availability, and parking reservations. It includes a service discovery mechanism through Eureka and an API Gateway for centralized routing.
+This is a microservices-based Smart Parking Management System developed using Spring Boot and Spring Cloud. The system manages user authentication, parking space availability, vehicle records, and parking reservations. It uses Eureka for service discovery and an API Gateway for centralized routing and security enforcement.
 
 ## Project Structure
 
@@ -10,9 +10,9 @@ This is a microservices-based Smart Parking Management System developed using Sp
 - `api-gateway/` – Central gateway for routing and securing API requests
 - `user-service/` – Manages user registration, authentication, and user roles
 - `vehicle-service/` – Manages vehicle records associated with registered users
-- `parking-space-service/` – Manages available parking slots and their details
-- `parking-reservation-service/` – Handles parking reservations, active sessions, and history
-- `docs/screenshots/` – Screenshots and documentation assets
+- `parking-space-service/` – Manages available parking slots and related information
+- `parking-reservation-service/` – Handles parking reservations, active sessions, and reservation history
+- `docs/screenshots/` – Contains documentation assets and screenshots
 
 ## Technologies Used
 
@@ -26,20 +26,31 @@ This is a microservices-based Smart Parking Management System developed using Sp
 - Maven
 - Git, GitHub
 
+## Configuration Management
+
+This project uses centralized configuration management via **Spring Cloud Config Server**. All service configurations are maintained in a separate Git-based repository:
+
+- Repository Name: `SPMS-config-repo`
+- Repository Link:
+  ```bash
+  git clone https://github.com/sandunipri/SPMS-Config-Repo.git
+  
+Each microservice retrieves its configuration at startup from this external repository.
+
 ## Resources
 
 - [Postman Collection](./smart-parking-system.postman_collection.json)
 
-##  Eureka Dashboard
-  
-- ![Eureka Dashboard](./docs/screenshots/eureka_dashboard-01.png)
-- ![Eureka Dashboard](./docs/screenshots/eureka_dashboard-02.png)  
+## Eureka Dashboard
 
- 
+- ![Eureka Dashboard 01](./docs/screenshots/eureka_dashboard-01.png)
+- ![Eureka Dashboard 02](./docs/screenshots/eureka_dashboard-02.png)
+
 ## How to Run the Project
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/sandunipri/Smart-Parking-Management-System.git]
+   git clone https://github.com/sandunipri/Smart-Parking-Management-System.git
    cd Smart-Parking-Management-System
+
 
